@@ -15,6 +15,7 @@ import { Bar } from 'react-chartjs-2';
 import { collection, getDocs } from 'firebase/firestore';
 import { auth, FirestoreDB } from '../../firebase';
 import { ordinalNumbers } from './utils/ordinalNumbers';
+import { scrollToUser } from './utils/scrollToUser';
 
 ChartJS.register(...registerables);
 
@@ -33,7 +34,7 @@ const LeaderBoardChart: React.FC = () => {
   const [dataType, setDataType] = useState('');
   const [loading, setLoading] = useState(false);
   const adData = useContext(AdminContext);
-  const contentRef = useRef<HTMLIonCardElement | null>(null);
+  const contentRef = useRef<HTMLIonCardElement | null>(null); /* Would need to move this outside component to export to utils */
   const chartHeightMultiplier = 60;
 
   // formats the chart to use user/team names as the labels, and graphs the steps taken by each team/user.
@@ -193,6 +194,7 @@ const LeaderBoardChart: React.FC = () => {
     }
   };
 
+  /* This function definition moved to utils folder. Called in imgItems */
   // gives leaderboard placement numbers a suffix
   // const ordinalNumbers = (n: number) => {
   //   return n > 0
@@ -200,7 +202,9 @@ const LeaderBoardChart: React.FC = () => {
   //     : '';
   // };
 
+  /* UI unclickable / scrollable when this is abstracted out */
   // gets the index to calculate the scoll distance needed to bring the user into view
+  //const scrollToUser(contentRef, data, chartHeightMultiplier);
   const scrollToUser = () => {
     const content = contentRef.current;
     let y = 0;

@@ -14,10 +14,15 @@ import AdminContext from '../../store/admin-context';
 import { Bar } from 'react-chartjs-2';
 import { collection, getDocs } from 'firebase/firestore';
 import { auth, FirestoreDB } from '../../firebase';
+import { ordinalNumbers } from './utils/ordinalNumbers';
+import { scrollToUser } from './utils/scrollToUser';
+
+export type ContentRefType = React.MutableRefObject<HTMLIonCardElement | null>;
 
 ChartJS.register(...registerables);
 
-interface Data {
+/* added export */
+export interface Data {
   name: string;
   profile_pic?: string;
   totalStep?: number;
@@ -203,21 +208,21 @@ const TeamLeaderboardChart: React.FC<{ memberData: Array<Data> }> = ({
   // };
 
   // gets the index to calculate the scoll distance needed to bring the user into view
-  const scrollToUser = () => {
-    const content = contentRef.current;
-    let y = 0;
-    data.every((member: any) => {
-      if (!member.highlight) {
-        y += 1;
-        return true;
-      } else {
-        return false;
-      }
-    });
-    if (content) {
-      content.scrollTop = (y + 2) * chartHeightMultiplier;
-    }
-  };
+  // const scrollToUser = () => {
+  //   const content = contentRef.current;
+  //   let y = 0;
+  //   data.every((member: any) => {
+  //     if (!member.highlight) {
+  //       y += 1;
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   });
+  //   if (content) {
+  //     content.scrollTop = (y + 2) * chartHeightMultiplier;
+  //   }
+  // };
 
   // gets the data from the db for teams, sorts them based on highest to lowest steps, and sets the data
   async function getChartData() {
@@ -280,7 +285,8 @@ const TeamLeaderboardChart: React.FC<{ memberData: Array<Data> }> = ({
   // auto scroll to user
   useEffect(() => {
     setTimeout(() => {
-      scrollToUser();
+      /* Had to add params in order to move function implementation to diff file */
+      scrollToUser(contentRef, data, chartHeightMultiplier);
     }, 500);
   }, [data]);
 
