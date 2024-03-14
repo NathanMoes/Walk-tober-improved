@@ -14,6 +14,7 @@ import AdminContext from '../../store/admin-context';
 import { Bar } from 'react-chartjs-2';
 import { collection, getDocs } from 'firebase/firestore';
 import { auth, FirestoreDB } from '../../firebase';
+import { ordinalNumbers } from './utils/ordinalNumbers';
 
 ChartJS.register(...registerables);
 
@@ -81,13 +82,13 @@ const LeaderBoardChart: React.FC = () => {
           place,
           0,
           y.getPixelForValue(index) + imgSize / 2 / 2,
-          imgSize - 5
+          imgSize - 5 /* different from imgItems in TeamLeaderBoardChart */
         );
 
         // draws the image of the user's profile picture
         ctx.drawImage(
           profilePic,
-          imgSize - 5,
+          imgSize - 5, /* different from imgItems in TeamLeaderBoardChart */
           y.getPixelForValue(index) - imgSize / 2,
           imgSize,
           imgSize
@@ -193,11 +194,11 @@ const LeaderBoardChart: React.FC = () => {
   };
 
   // gives leaderboard placement numbers a suffix
-  const ordinalNumbers = (n: number) => {
-    return n > 0
-      ? ['th', 'st', 'nd', 'rd'][(n > 3 && n < 21) || n % 10 > 3 ? 0 : n % 10]
-      : '';
-  };
+  // const ordinalNumbers = (n: number) => {
+  //   return n > 0
+  //     ? ['th', 'st', 'nd', 'rd'][(n > 3 && n < 21) || n % 10 > 3 ? 0 : n % 10]
+  //     : '';
+  // };
 
   // gets the index to calculate the scoll distance needed to bring the user into view
   const scrollToUser = () => {
