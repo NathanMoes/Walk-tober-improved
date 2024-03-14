@@ -3,8 +3,8 @@ import {
   IonCardContent,
   IonButton,
   IonCardHeader,
-  IonSpinner,
-  IonCardTitle
+  IonCardTitle,
+  IonSpinner
 } from '@ionic/react';
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import './TeamLeaderboardChart.scss';

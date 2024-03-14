@@ -49,7 +49,7 @@ function getLeafColor(day: number, data: StepLog[]): string {
         ></img>
       ) : (
         ''
-      )
+      );
       return data[day - 2].color;
 }
 const populateCalendar = (data: StepLog[]) => {
