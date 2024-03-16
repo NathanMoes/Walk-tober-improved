@@ -48,7 +48,7 @@ function getLeafColor(day: number, data: StepLog[]): string {
           className="leafImg"
         ></img>
       ) : (
-        ''
+        ' '
       )
       return data[day - 2].color;
 }
@@ -73,6 +73,7 @@ const populateCalendar = (data: StepLog[]) => {
         day < 31 to ensure that data is not read beyond and to ensure that only 31 days 
         (number) are displayed. As october always has 31 days*/}
 
+          
         <div className="grid-item">
           {monthStart.getDay() == 0 ? day++ : ''}
           {day < 31 ? (
