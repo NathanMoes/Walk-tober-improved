@@ -31,6 +31,12 @@ interface StepLog {
 // returned is a css grid populated with an image for the icons/leaves plus the day.
 // postfix is used to ensure that the number is correct for each day and increment it after in one line
 
+/**
+ * Function to get the color of the leaf for the day.
+ * @param day - the day of the month
+ * @param data - the StepLog data for that day
+ * @returns the color of the leaf for the day 
+ * */ 
 function getLeafColor(day: number, data: StepLog[]): string {
     
       data[day - 2].color !== 'null' ? (
@@ -52,6 +58,11 @@ function getLeafColor(day: number, data: StepLog[]): string {
       )
       return data[day - 2].color;
 }
+/**
+ * Function to populate the calendar with the leaves and days. 
+ * @param data - the StepLog data for the month
+ * @returns the IonGrid for the calendar, with the leaves and days populated
+ */
 const populateCalendar = (data: StepLog[]) => {
   let day = 1; // day var for displaying the day on calendar as well as serving as an index.
 
@@ -403,7 +414,11 @@ const populateCalendar = (data: StepLog[]) => {
   );
 };
 
-// below is the react feature component for the calendar. It takes props for the data that is used in determining the leaves to display for each day
+/**
+ * This Function is the react feature component for the calendar. It takes props for the data that is 
+ * used in determining the leaves to display for each day
+ * @param data - the StepLog data for the month
+ *  */ 
 const CalendarLeafs: React.FC<{ data: StepLog[] }> = ({ data }) => {
   // LEAVE THE h1 IN, otherwise init load will not be happy. As the data would not be populated thus, access violation on array
   return (
