@@ -17,6 +17,9 @@ interface NavLinkProps {
   children?: React.ReactNode // links present in dropdown
 }
 
+/**
+ * Function to create popovers when mouse is over a link or button
+ */
 const NavLink: React.FC<NavLinkProps> = ({ id, text, href, children = null }) => {
   const history = useHistory();
 
@@ -53,6 +56,9 @@ const NavLink: React.FC<NavLinkProps> = ({ id, text, href, children = null }) =>
     await Browser.open({ url: url });
   };
 
+  /**
+   * function to display links in the popover if they exist
+   */
   const navigate = (e: React.MouseEvent) => {
     const popover = e.currentTarget.closest('ion-popover') as HTMLIonPopoverElement;
 

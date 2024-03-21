@@ -9,6 +9,10 @@ const now = Date.now();
 const today = new Date(now);
 const daysLeft = 31 - today.getUTCDate(); // 31 days in october
 
+/**
+ * Function to track a user's personal progress.
+ * @returns IonItem containing the user's goal, steps taken, and steps left to meet goal.
+ */
 const PersonalProgress: React.FC<{}> = (): ReactElement => {
   const goalSteps = 100000;
   useEffect(() => {}, []); // will be used to pull the persons goal steps

@@ -9,6 +9,11 @@ interface StepLog {
   steps: number;
 }
 
+/**
+ * Function to create the progress chart that displays the user's progress data
+ * @param param0 step log, today's steps, and step goal
+ * @returns progress chart containing the user's progress data
+ */
 const ProgressChart: React.FC<{ data: Array<StepLog>, todayStep: number, stepGoal: number }> = ({ data }) => {
 
   // below vars are self documenting
