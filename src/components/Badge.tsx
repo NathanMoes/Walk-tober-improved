@@ -11,6 +11,10 @@ import {
 import { accessibilityOutline } from 'ionicons/icons';
 import React from 'react';
 
+/**
+ * Function to create the Badge component
+ * @returns Badge component
+ */
 const Badge: React.FC<{}> = () => {
   return (
     <IonItem>

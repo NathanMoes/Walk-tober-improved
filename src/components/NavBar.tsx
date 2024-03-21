@@ -14,7 +14,12 @@ interface NavBarProps {
   collapse?: 'condense' | 'fade'; // carryover from ion-header
   children?: React.ReactNode; // child elements like titles
 }
-
+/**
+ * Naviation bar for the app, displays the PSU logo in the correct format
+ * depending on if the user is on a mobile device or a computer.
+ * On mobile, children are not expanded. On computer, children are expanded.
+ * @returns Navigation bar
+ */
 const NavBar: React.FC<NavBarProps> = ({
   collapse = undefined,
   children = null

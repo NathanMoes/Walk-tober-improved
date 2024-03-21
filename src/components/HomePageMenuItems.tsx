@@ -3,6 +3,10 @@ import { ReactElement } from 'react';
 import { IonContent, IonButton } from '@ionic/react';
 import { useHistory } from 'react-router';
 
+/**
+ * Function to create buttons for the home page to give users a menu of pages to navigate to.
+ * @returns Buttons for the home page
+ */
 const HomePageMenuItems: React.FC<{}> = (): ReactElement => {
   const history = useHistory();
   return (

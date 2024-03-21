@@ -5,6 +5,10 @@ import { IonButton, IonIcon } from '@ionic/react';
 import AuthContext from '../store/auth-context';
 import { useHistory } from 'react-router';
 
+/**
+ * Function to create the Login button, or the Profile button (once the user is logged in)
+ * @returns Login or Profile button
+ */
 const LoginOrProfileButton: React.FC<{}> = (): ReactElement => {
   const ctx = useContext(AuthContext);
   const history = useHistory();
