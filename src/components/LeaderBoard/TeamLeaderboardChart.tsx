@@ -16,6 +16,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { auth, FirestoreDB } from '../../firebase';
 import { ordinalNumbers } from './utils/ordinalNumbers';
 import { scrollToUser } from './utils/scrollToUser';
+//import { getChartData, ChartData } from './utils/chartData';
 
 export type ContentRefType = React.MutableRefObject<HTMLIonCardElement | null>;
 
@@ -58,6 +59,7 @@ const TeamLeaderboardChart: React.FC<{ memberData: Array<Data> }> = ({
       }
     ]
   };
+  //const chartData = getChartData(data);
 
   // adds image of users or team to the chart next to the user's/team's name
   const imgItems = {

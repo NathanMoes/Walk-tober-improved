@@ -90,6 +90,7 @@ const LeaderBoardChart: React.FC = () => {
         ctx.drawImage(
           profilePic,
           imgSize - 5, /* different from imgItems in TeamLeaderBoardChart */
+          /* function that returns object, pass variable as -5... */
           y.getPixelForValue(index) - imgSize / 2,
           imgSize,
           imgSize
