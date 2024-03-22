@@ -15,8 +15,8 @@ import { Bar } from 'react-chartjs-2';
 import { collection, getDocs } from 'firebase/firestore';
 import { auth, FirestoreDB } from '../../firebase';
 import { ordinalNumbers } from './utils/ordinalNumbers';
-import { scrollToUser } from './utils/scrollToUser';
-//import { getChartData, ChartData } from './utils/chartData';
+import { scrollToUser } from './utils/scrollToUser'; // gets the index to calculate the scoll distance needed to bring the user into view
+import { getChartData, ChartData } from './utils/chartData';
 
 export type ContentRefType = React.MutableRefObject<HTMLIonCardElement | null>;
 
@@ -207,23 +207,6 @@ const TeamLeaderboardChart: React.FC<{ memberData: Array<Data> }> = ({
   //   return n > 0
   //     ? ['th', 'st', 'nd', 'rd'][(n > 3 && n < 21) || n % 10 > 3 ? 0 : n % 10]
   //     : '';
-  // };
-
-  // gets the index to calculate the scoll distance needed to bring the user into view
-  // const scrollToUser = () => {
-  //   const content = contentRef.current;
-  //   let y = 0;
-  //   data.every((member: any) => {
-  //     if (!member.highlight) {
-  //       y += 1;
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   });
-  //   if (content) {
-  //     content.scrollTop = (y + 2) * chartHeightMultiplier;
-  //   }
   // };
 
   // gets the data from the db for teams, sorts them based on highest to lowest steps, and sets the data

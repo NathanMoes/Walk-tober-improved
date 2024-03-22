@@ -15,7 +15,9 @@ import { Bar } from 'react-chartjs-2';
 import { collection, getDocs } from 'firebase/firestore';
 import { auth, FirestoreDB } from '../../firebase';
 import { ordinalNumbers } from './utils/ordinalNumbers';
-import { scrollToUser } from './utils/scrollToUser';
+import { scrollToUser } from './utils/scrollToUser';  // gets the index to calculate the scoll distance needed to bring the user into view
+
+export type ContentRefType = React.MutableRefObject<HTMLIonCardElement | null>;
 
 ChartJS.register(...registerables);
 
@@ -203,25 +205,6 @@ const LeaderBoardChart: React.FC = () => {
   //     : '';
   // };
 
-  /* UI unclickable / scrollable when this is abstracted out */
-  // gets the index to calculate the scoll distance needed to bring the user into view
-  //const scrollToUser(contentRef, data, chartHeightMultiplier);
-  const scrollToUser = () => {
-    const content = contentRef.current;
-    let y = 0;
-    data.every((member: any) => {
-      if (!member.highlight) {
-        y += 1;
-        return true;
-      } else {
-        return false;
-      }
-    });
-    if (content) {
-      content.scrollTop = (y + 2) * chartHeightMultiplier;
-    }
-  };
-
   // get data from database
   async function getChartData() {
     const indData: Array<Data> = [];
@@ -301,7 +284,7 @@ const LeaderBoardChart: React.FC = () => {
   // auto scroll to user
   useEffect(() => {
     setTimeout(() => {
-      scrollToUser();
+      scrollToUser(contentRef, data, chartHeightMultiplier);
     }, 500);
   }, [data]);
 
