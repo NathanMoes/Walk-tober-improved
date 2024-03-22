@@ -14,7 +14,7 @@ import AdminContext from '../../store/admin-context';
 import { Bar } from 'react-chartjs-2';
 import { collection, getDocs } from 'firebase/firestore';
 import { auth, FirestoreDB } from '../../firebase';
-import { ordinalNumbers } from './utils/ordinalNumbers';
+import { ordinalNumbers } from './utils/ordinalNumbers';  // gives leaderboard placement numbers a suffix
 import { scrollToUser } from './utils/scrollToUser'; // gets the index to calculate the scoll distance needed to bring the user into view
 import { getChartData, ChartData } from './utils/chartData';
 
@@ -201,13 +201,6 @@ const TeamLeaderboardChart: React.FC<{ memberData: Array<Data> }> = ({
       }
     }
   };
-
-  // gives leaderboard placement numbers a suffix
-  // const ordinalNumbers = (n: number) => {
-  //   return n > 0
-  //     ? ['th', 'st', 'nd', 'rd'][(n > 3 && n < 21) || n % 10 > 3 ? 0 : n % 10]
-  //     : '';
-  // };
 
   // gets the data from the db for teams, sorts them based on highest to lowest steps, and sets the data
   async function getChartData() {

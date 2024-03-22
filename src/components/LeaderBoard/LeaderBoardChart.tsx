@@ -14,7 +14,7 @@ import AdminContext from '../../store/admin-context';
 import { Bar } from 'react-chartjs-2';
 import { collection, getDocs } from 'firebase/firestore';
 import { auth, FirestoreDB } from '../../firebase';
-import { ordinalNumbers } from './utils/ordinalNumbers';
+import { ordinalNumbers } from './utils/ordinalNumbers'; // gives leaderboard placement numbers a suffix
 import { scrollToUser } from './utils/scrollToUser';  // gets the index to calculate the scoll distance needed to bring the user into view
 
 export type ContentRefType = React.MutableRefObject<HTMLIonCardElement | null>;
@@ -196,14 +196,6 @@ const LeaderBoardChart: React.FC = () => {
       box.setAttribute('style', 'height: ' + newHeight.toString() + 'px');
     }
   };
-
-  /* This function definition moved to utils folder. Called in imgItems */
-  // gives leaderboard placement numbers a suffix
-  // const ordinalNumbers = (n: number) => {
-  //   return n > 0
-  //     ? ['th', 'st', 'nd', 'rd'][(n > 3 && n < 21) || n % 10 > 3 ? 0 : n % 10]
-  //     : '';
-  // };
 
   // get data from database
   async function getChartData() {
